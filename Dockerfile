@@ -22,7 +22,7 @@ RUN apt-get update && \
     software-properties-common dirmngr wget \
     curl libpq5 libclang-dev libnss3 \
     libatk1.0-0 libatk-bridge2.0-0 libcups2 \
-    libgtk-3-0 libasound2 && \
+    libgtk-3-0 libasound2 build-essential && \
     wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
     apt-get install --no-install-recommends -y r-base && \
