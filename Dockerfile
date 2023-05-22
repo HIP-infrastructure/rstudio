@@ -39,7 +39,7 @@ RUN apt-get update && \
 ENV APP_SPECIAL="no"
 ENV APP_CMD="rstudio"
 ENV PROCESS_NAME="rstudio"
-ENV APP_DATA_DIR_ARRAY=".r R .config/rstudio"
+ENV APP_DATA_DIR_ARRAY=".r R .config/rstudio .config/R .local/share/rstudio"
 ENV DATA_DIR_ARRAY=""
 
 HEALTHCHECK --interval=10s --timeout=10s --retries=5 --start-period=30s \
