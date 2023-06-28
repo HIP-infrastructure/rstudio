@@ -20,17 +20,17 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y \ 
     software-properties-common dirmngr wget \
-    curl libpq5 libclang-dev libnss3 \
-    libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+    curl gpg gpg-agent libssl-dev libpq5 libclang-dev \
+    libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
     libgtk-3-0 libasound2 build-essential && \
     wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
     apt-get install --no-install-recommends -y r-base && \
     add-apt-repository ppa:c2d4u.team/c2d4u4.0+ && \
     apt-get install --no-install-recommends -y r-cran-rstan r-cran-tidyverse && \
-    curl -sSO https://download1.rstudio.org/electron/bionic/amd64/rstudio-${APP_VERSION}-386-amd64.deb && \
-    dpkg -i rstudio-${APP_VERSION}-386-amd64.deb && \
-    rm -rf rstudio-${APP_VERSION}-386-amd64.deb && \
+    curl -sSO https://download1.rstudio.org/electron/jammy/amd64/rstudio-${APP_VERSION}-421-amd64.deb && \
+    dpkg -i rstudio-${APP_VERSION}-421-amd64.deb && \
+    rm -rf rstudio-${APP_VERSION}-421-amd64.deb && \
     apt-get remove -y --purge wget curl && \
     apt-get autoremove -y --purge && \
     apt-get clean && \
