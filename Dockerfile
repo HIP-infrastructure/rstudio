@@ -22,7 +22,8 @@ RUN apt-get update && \
     software-properties-common dirmngr wget \
     curl gpg gpg-agent libssl-dev libpq5 libclang-dev \
     libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
-    libgtk-3-0 libasound2 build-essential && \
+    libgtk-3-0 libasound2 build-essential cmake \
+    gfortran liblapack-dev libopenblas-dev libpng-dev && \
     wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
     apt-get install --no-install-recommends -y r-base && \
@@ -31,6 +32,8 @@ RUN apt-get update && \
     curl -sSO https://download1.rstudio.org/electron/jammy/amd64/rstudio-${APP_VERSION}-421-amd64.deb && \
     dpkg -i rstudio-${APP_VERSION}-421-amd64.deb && \
     rm -rf rstudio-${APP_VERSION}-421-amd64.deb && \
+    R -e "install.packages('devtools', repos='http://cloud.r-project.org')" && \
+    R -e "devtools::install_github('Mikata-Project/ggthemr')" && \
     apt-get remove -y --purge wget curl && \
     apt-get autoremove -y --purge && \
     apt-get clean && \
