@@ -18,7 +18,7 @@ WORKDIR /apps/${APP_NAME}
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y \ 
+    apt-get install --no-install-recommends -y \
     software-properties-common dirmngr wget \
     curl gpg gpg-agent libssl-dev libpq5 libclang-dev \
     libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
@@ -29,9 +29,9 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y r-base && \
     add-apt-repository ppa:c2d4u.team/c2d4u4.0+ && \
     apt-get install --no-install-recommends -y r-cran-rstan r-cran-tidyverse && \
-    curl -sSO https://download1.rstudio.org/electron/jammy/amd64/rstudio-${APP_VERSION}-421-amd64.deb && \
-    dpkg -i rstudio-${APP_VERSION}-421-amd64.deb && \
-    rm -rf rstudio-${APP_VERSION}-421-amd64.deb && \
+    curl -sSO https://download1.rstudio.org/electron/jammy/amd64/rstudio-${APP_VERSION}-563-amd64.deb && \
+    dpkg -i rstudio-${APP_VERSION}-563-amd64.deb && \
+    rm -rf rstudio-${APP_VERSION}-563-amd64.deb && \
     R -e "install.packages('devtools', repos='http://cloud.r-project.org')" && \
     R -e "devtools::install_github('Mikata-Project/ggthemr')" && \
     apt-get remove -y --purge wget curl file && \
